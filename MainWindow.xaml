@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StopWatch"
         mc:Ignorable="d"
-        Title="Stop watch" Height="125" Width="200">
+        Title="Stop watch" Height="125" Width="200" WindowStartupLocation="CenterScreen" Icon="StopWatch.ico">
+    <Window.Resources>
+        <local:TimeConverter x:Key="TimeConverter"></local:TimeConverter>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"></ColumnDefinition>
@@ -23,10 +26,32 @@
         </Grid.RowDefinitions>
 
         <Viewbox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
-            <Label Content="00:00:00.00"></Label>
+            <Label Content="{Binding Path=Time, Converter={StaticResource TimeConverter}}"></Label>
         </Viewbox>
 
-        <Button Grid.Row="3" Grid.Column="1" Click="Play" Content="Пуск" Foreground="DarkGreen" FontWeight="Bold" />
-        <Button Grid.Row="3" Grid.Column="3" Click="Stop" Content="Сброс" Foreground="DarkRed" FontWeight="Bold" />
+        <Button x:Name="PlayBtn" Grid.Row="3" Grid.Column="1">
+            <Viewbox>
+                <Label Content="Play" Foreground="DarkGreen" FontWeight="Bold" />
+            </Viewbox>
+            <ToolTipService.ToolTip>
+                F5 - Play
+            </ToolTipService.ToolTip>
+        </Button>
+        <Button x:Name="PauseBtn" Grid.Row="3" Grid.Column="1" Visibility="Hidden" IsEnabled="False">
+            <Viewbox>
+                <Label Content="Pause" Foreground="Orange" FontWeight="Bold" />
+            </Viewbox>
+            <ToolTipService.ToolTip>
+                F6 - Pause
+            </ToolTipService.ToolTip>
+        </Button>
+        <Button x:Name="StopBtn" Grid.Row="3" Grid.Column="3">
+            <Viewbox>
+                <Label Content="Reset" Foreground="DarkRed" FontWeight="Bold" />
+            </Viewbox>
+            <ToolTipService.ToolTip>
+                F8 - Reset
+            </ToolTipService.ToolTip>
+        </Button>
     </Grid>
 </Window>

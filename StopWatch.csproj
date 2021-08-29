@@ -4,6 +4,19 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>StopWatch.ico</ApplicationIcon>
+    <Copyright></Copyright>
+    <Authors>Tatarintsev Aleksandr</Authors>
+    <Company>XEtreme Team</Company>
+    <Description>Simple stop watch for Windows 7+ platforms.</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="StopWatch.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="StopWatch.ico" />
+  </ItemGroup>
 
 </Project>
